@@ -29,6 +29,7 @@ public class PrimaryPresenter extends GluonPresenter<WorkoutApplication> {
                 appBar.setTitleText("Primary");
                 appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e -> 
                         System.out.println("Search")));
+                appBar.setVisible(false);
             }
         });
     }
