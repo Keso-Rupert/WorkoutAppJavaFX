@@ -16,12 +16,12 @@ import static com.gluonhq.charm.glisten.afterburner.AppView.Flag.HOME_VIEW;
 import static com.gluonhq.charm.glisten.afterburner.AppView.Flag.SHOW_IN_DRAWER;
 import static com.gluonhq.charm.glisten.afterburner.AppView.Flag.SKIP_VIEW_STACK;
 
-public class AppViewManager {
+public class DrawerManager {
 
     public static final AppViewRegistry REGISTRY = new AppViewRegistry();
 
-    public static final AppView PRIMARY_VIEW = view("Primary", PrimaryPresenter.class, MaterialDesignIcon.HOME, SHOW_IN_DRAWER, HOME_VIEW, SKIP_VIEW_STACK);
-    public static final AppView SECONDARY_VIEW = view("Secondary", SecondaryPresenter.class, MaterialDesignIcon.DASHBOARD, SHOW_IN_DRAWER);
+    public static final AppView PRIMARY_VIEW = view("Workout history", PrimaryPresenter.class, MaterialDesignIcon.LIST, SHOW_IN_DRAWER, HOME_VIEW, SKIP_VIEW_STACK);
+    public static final AppView SECONDARY_VIEW = view("New workout", SecondaryPresenter.class, MaterialDesignIcon.PLAYLIST_ADD, SHOW_IN_DRAWER);
     
     private static AppView view(String title, Class<? extends GluonPresenter<?>> presenterClass, MaterialDesignIcon menuIcon, AppView.Flag... flags ) {
         return REGISTRY.createView(name(presenterClass), title, presenterClass, menuIcon, flags);
@@ -36,9 +36,9 @@ public class AppViewManager {
             view.registerView(app);
         }
 
-        NavigationDrawer.Header header = new NavigationDrawer.Header("Gluon Mobile",
-                "Multi View Project",
-                new Avatar(21, new Image(WorkoutApplication.class.getResourceAsStream("/icon.png"))));
+        NavigationDrawer.Header header = new NavigationDrawer.Header("Workout app",
+                "by Keso Rupert",
+                new Avatar(25, new Image(WorkoutApplication.class.getResourceAsStream("/easy.png"))));
 
         Utils.buildDrawer(app.getDrawer(), header, REGISTRY.getViews()); 
     }

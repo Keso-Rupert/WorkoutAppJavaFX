@@ -26,9 +26,7 @@ public class SecondaryPresenter extends GluonPresenter<WorkoutApplication> {
                 AppBar appBar = getApp().getAppBar();
                 appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> 
                         getApp().getDrawer().open()));
-                appBar.setTitleText("Secondary");
-                appBar.getActionItems().add(MaterialDesignIcon.FAVORITE.button(e -> 
-                        System.out.println("Favorite")));
+                appBar.setTitleText("New workout");
             }
         });
     }
