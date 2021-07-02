@@ -1,7 +1,9 @@
 package dev.kesorupert;
 
-import com.gluonhq.charm.glisten.visual.Theme;
-import dev.kesorupert.views.DrawerManager;
+import com.gluonhq.charm.glisten.control.BottomNavigation;
+import com.gluonhq.charm.glisten.control.BottomNavigationButton;
+import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import dev.kesorupert.views.AppViewManager;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.visual.Swatch;
 import javafx.scene.Scene;
@@ -12,16 +14,13 @@ public class WorkoutApplication extends MobileApplication {
 
     @Override
     public void init() {
-        DrawerManager.registerViewsAndDrawer(this);
+        AppViewManager.registerViewsAndDrawer(this);
     }
 
     @Override
     public void postInit(Scene scene) {
         Swatch.BLUE_GREY.assignTo(scene);
-//        Theme.DARK.assignTo(scene);
-//        Theme.LIGHT.assignTo(scene);
         scene.getStylesheets().forEach(System.out::println);
-
 
 
         scene.getStylesheets().add(WorkoutApplication.class.getResource("style.css").toExternalForm());
@@ -31,4 +30,5 @@ public class WorkoutApplication extends MobileApplication {
     public static void main(String args[]) {
         launch(args);
     }
+
 }

@@ -107,8 +107,8 @@
                         <list>dev.kesorupert.views.secondary</list>
                     </bundlesList>
                     <reflectionList>
-                        <list>dev.kesorupert.views.PrimaryPresenter</list>
-                        <list>dev.kesorupert.views.SecondaryPresenter</list>
+                        <list>dev.kesorupert.views.LogPresenter</list>
+                        <list>dev.kesorupert.views.NewWorkoutPresenter</list>
                     </reflectionList>
                     <mainClass>${mainClassName}</mainClass>
                 </configuration>

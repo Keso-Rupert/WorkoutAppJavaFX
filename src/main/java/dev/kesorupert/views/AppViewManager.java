@@ -16,13 +16,15 @@ import static com.gluonhq.charm.glisten.afterburner.AppView.Flag.HOME_VIEW;
 import static com.gluonhq.charm.glisten.afterburner.AppView.Flag.SHOW_IN_DRAWER;
 import static com.gluonhq.charm.glisten.afterburner.AppView.Flag.SKIP_VIEW_STACK;
 
-public class DrawerManager {
+public class AppViewManager {
 
     public static final AppViewRegistry REGISTRY = new AppViewRegistry();
 
-    public static final AppView PRIMARY_VIEW = view("Workout history", PrimaryPresenter.class, MaterialDesignIcon.LIST, SHOW_IN_DRAWER, HOME_VIEW, SKIP_VIEW_STACK);
-    public static final AppView SECONDARY_VIEW = view("New workout", SecondaryPresenter.class, MaterialDesignIcon.PLAYLIST_ADD, SHOW_IN_DRAWER);
-    
+    public static final AppView LOG_VIEW = view("Workout history", LogPresenter.class, MaterialDesignIcon.LIST, SHOW_IN_DRAWER, HOME_VIEW, SKIP_VIEW_STACK);
+    public static final AppView ROUTINES_VIEW = view("Routines", RoutinesPresenter.class, MaterialDesignIcon.VIEW_LIST, SHOW_IN_DRAWER);
+    public static final AppView EXERCISES_VIEW = view("Exercises", ExercisesPresenter.class, MaterialDesignIcon.ROWING, SHOW_IN_DRAWER);
+    public static final AppView NEW_WORKOUT_VIEW = view("New workout", NewWorkoutPresenter.class, MaterialDesignIcon.PLAYLIST_ADD, SHOW_IN_DRAWER);
+
     private static AppView view(String title, Class<? extends GluonPresenter<?>> presenterClass, MaterialDesignIcon menuIcon, AppView.Flag... flags ) {
         return REGISTRY.createView(name(presenterClass), title, presenterClass, menuIcon, flags);
     }
