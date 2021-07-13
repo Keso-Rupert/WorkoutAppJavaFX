@@ -22,6 +22,7 @@ public class HeaderCell extends CharmListCell<Workout> {
         super.updateItem(item, empty);
         currentWorkoutItem = item;
         if (!empty && item != null) {
+            // setting the label with the month of the workout
             label.setText(dateTimeFormatter.format(currentWorkoutItem.getCreationDate()));
             setGraphic(label);
         } else {

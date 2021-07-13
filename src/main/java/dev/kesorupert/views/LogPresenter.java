@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javax.inject.Inject;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 
 public class LogPresenter extends GluonPresenter<WorkoutApplication> {
 
@@ -25,20 +26,25 @@ public class LogPresenter extends GluonPresenter<WorkoutApplication> {
     @Inject
     private WorkoutService workoutService;
 
-
     public void initialize() {
         logView.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
+                // Setting the default AppBar in the GlassPane to be invisible
                 getApp().getAppBar().setVisible(false);
             }
         });
 
+        // Creating a CharmListView from a ObservableList
         charmListView = new CharmListView<>(workoutService.getWorkoutList());
-        charmListView.setHeadersFunction(workout -> workout.getCreationDate());
-        charmListView.setCellFactory(cell -> new WorkoutCell());
+        // Setting the subheader properties for the CharmListView
+        charmListView.setHeadersFunction(Workout::getCreationDate);
+        charmListView.setHeaderComparator(Comparator.reverseOrder());
         charmListView.setHeaderCellFactory(cell -> new HeaderCell());
-        charmListView.setPlaceholder(new Label("There are no workouts yet"));
+        // Setting the CellFactory for the cells containing workouts
+        charmListView.setCellFactory(cell -> new WorkoutCell());
+        charmListView.setComparator(Comparator.comparing(Workout::getCreationDate).reversed());
 
+        charmListView.setPlaceholder(new Label("There are no workouts yet"));
 
         logView.setCenter(charmListView);
         logView.setBottom(UiResources.createBottomNavigation());

@@ -2,11 +2,7 @@ package dev.kesorupert.views;
 
 import com.gluonhq.charm.glisten.control.CharmListCell;
 import com.gluonhq.charm.glisten.control.ListTile;
-import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import dev.kesorupert.model.Workout;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 
 import java.time.format.DateTimeFormatter;
 
@@ -34,24 +30,13 @@ public class WorkoutCell extends CharmListCell<Workout> {
         super.updateItem(item, empty);
         currentWorkoutItem = item;
         if (!empty && item != null) {
+            // Setting the listTile with properties from the workout item
             listTile.textProperty().setAll(currentWorkoutItem.getWorkoutName(),
                     currentWorkoutItem.getWorkoutDesc(),
                     dateTimeFormatter.format(currentWorkoutItem.getCreationDate()));
-//            setText(null);
             setGraphic(listTile);
         } else {
-//            setText(null);
             setGraphic(null);
-        }
-    }
-
-    private void update() {
-        if (currentWorkoutItem != null) {
-            listTile.textProperty().setAll(currentWorkoutItem.getWorkoutName(),
-                    currentWorkoutItem.getWorkoutDesc(),
-                    dateTimeFormatter.format(currentWorkoutItem.getCreationDate()));
-        } else {
-            listTile.textProperty().clear();
         }
     }
 }
