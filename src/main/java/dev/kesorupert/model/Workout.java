@@ -46,8 +46,12 @@ public class Workout {
         this.workoutDesc.set(workoutDesc);
     }
 
-    public long getCreationDate() {
-        return creationDate;
+    public LocalDateTime getCreationDate() {
+        return LocalDateTime.ofEpochSecond(creationDate, 0, ZoneOffset.UTC);
+    }
+
+    public void setCreationDate(LocalDateTime localDateTime) {
+        this.creationDate = localDateTime.toEpochSecond(ZoneOffset.UTC);
     }
 
 }
