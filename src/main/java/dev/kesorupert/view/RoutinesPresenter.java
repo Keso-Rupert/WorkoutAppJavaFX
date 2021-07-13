@@ -1,4 +1,4 @@
-package dev.kesorupert.views;
+package dev.kesorupert.view;
 
 import com.gluonhq.charm.glisten.afterburner.GluonPresenter;
 import com.gluonhq.charm.glisten.mvc.View;

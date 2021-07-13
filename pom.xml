@@ -103,12 +103,16 @@
                         <list>storage</list>
                     </attachList>
                     <bundlesList>
-                        <list>dev.kesorupert.views.primary</list>
-                        <list>dev.kesorupert.views.secondary</list>
+                        <list>dev.kesorupert.view.primary</list>
+                        <list>dev.kesorupert.view.secondary</list>
                     </bundlesList>
                     <reflectionList>
-                        <list>dev.kesorupert.views.LogPresenter</list>
-                        <list>dev.kesorupert.views.NewWorkoutPresenter</list>
+                        <list>dev.kesorupert.view.LogPresenter</list>
+                        <list>dev.kesorupert.view.NewWorkoutPresenter</list>
+                        <list>dev.kesorupert.model.ExerciseModel</list>
+                        <list>dev.kesorupert.model.Exercise</list>
+                        <!--<list>dev.kesorupert.model.WorkoutModel</list>
+                        <list>dev.kesorupert.model.Workout</list>-->
                     </reflectionList>
                     <mainClass>${mainClassName}</mainClass>
                 </configuration>

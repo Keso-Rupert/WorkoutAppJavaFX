@@ -1,9 +1,6 @@
 package dev.kesorupert;
 
-import com.gluonhq.charm.glisten.control.BottomNavigation;
-import com.gluonhq.charm.glisten.control.BottomNavigationButton;
-import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
-import dev.kesorupert.views.AppViewManager;
+import dev.kesorupert.view.AppViewManager;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.visual.Swatch;
 import javafx.scene.Scene;

@@ -1,4 +1,4 @@
-package dev.kesorupert.views;
+package dev.kesorupert.view;
 
 import com.gluonhq.charm.glisten.afterburner.AppView;
 import com.gluonhq.charm.glisten.afterburner.AppViewRegistry;
@@ -20,10 +20,11 @@ public class AppViewManager {
 
     public static final AppViewRegistry REGISTRY = new AppViewRegistry();
 
-    public static final AppView LOG_VIEW = view("Workout history", LogPresenter.class, MaterialDesignIcon.LIST, SHOW_IN_DRAWER, HOME_VIEW, SKIP_VIEW_STACK);
-    public static final AppView ROUTINES_VIEW = view("Routines", RoutinesPresenter.class, MaterialDesignIcon.VIEW_LIST, SHOW_IN_DRAWER);
-    public static final AppView EXERCISES_VIEW = view("Exercises", ExercisesPresenter.class, MaterialDesignIcon.ROWING, SHOW_IN_DRAWER);
-    public static final AppView NEW_WORKOUT_VIEW = view("New workout", NewWorkoutPresenter.class, MaterialDesignIcon.PLAYLIST_ADD, SHOW_IN_DRAWER);
+    public static final AppView LOG_VIEW = view("Workout history", LogPresenter.class, MaterialDesignIcon.LIST, HOME_VIEW, SKIP_VIEW_STACK);
+    public static final AppView ROUTINES_VIEW = view("Routines", RoutinesPresenter.class, MaterialDesignIcon.VIEW_LIST);
+    public static final AppView EXERCISES_VIEW = view("Exercises", ExercisesPresenter.class, MaterialDesignIcon.ROWING);
+    public static final AppView NEW_WORKOUT_VIEW = view("New workout", NewWorkoutPresenter.class, MaterialDesignIcon.PLAYLIST_ADD);
+    public static final AppView NEW_EXERCISE_VIEW = view("New exercise", NewWorkoutPresenter.class, MaterialDesignIcon.PLAYLIST_ADD);
 
     private static AppView view(String title, Class<? extends GluonPresenter<?>> presenterClass, MaterialDesignIcon menuIcon, AppView.Flag... flags ) {
         return REGISTRY.createView(name(presenterClass), title, presenterClass, menuIcon, flags);

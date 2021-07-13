@@ -1,4 +1,4 @@
-package dev.kesorupert.views;
+package dev.kesorupert.cell;
 
 import com.gluonhq.charm.glisten.control.CharmListCell;
 import com.gluonhq.charm.glisten.control.ListTile;

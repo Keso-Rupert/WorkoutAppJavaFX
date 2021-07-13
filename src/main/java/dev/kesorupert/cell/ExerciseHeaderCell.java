@@ -1,29 +1,28 @@
-package dev.kesorupert.views;
+package dev.kesorupert.cell;
 
 import com.gluonhq.charm.glisten.control.CharmListCell;
+import dev.kesorupert.model.Exercise;
 import dev.kesorupert.model.Workout;
 import javafx.scene.control.Label;
 
 import java.time.format.DateTimeFormatter;
 
-public class HeaderCell extends CharmListCell<Workout> {
+public class ExerciseHeaderCell extends CharmListCell<Exercise> {
 
     private final Label label;
-    private Workout currentWorkoutItem;
-    private final DateTimeFormatter dateTimeFormatter;
+    private Exercise currentExerciseItem;
 
-    public HeaderCell(){
+    public ExerciseHeaderCell(){
         label = new Label();
-        dateTimeFormatter = DateTimeFormatter.ofPattern("MMMM");
     }
 
     @Override
-    public void updateItem(Workout item, boolean empty) {
+    public void updateItem(Exercise item, boolean empty) {
         super.updateItem(item, empty);
-        currentWorkoutItem = item;
+        currentExerciseItem = item;
         if (!empty && item != null) {
             // setting the label with the month of the workout
-            label.setText(dateTimeFormatter.format(currentWorkoutItem.getCreationDate()));
+            label.setText("Category as header?");
             setGraphic(label);
         } else {
             setGraphic(null);

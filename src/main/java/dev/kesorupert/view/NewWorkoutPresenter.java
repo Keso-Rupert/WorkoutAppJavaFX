@@ -1,15 +1,13 @@
-package dev.kesorupert.views;
+package dev.kesorupert.view;
 
 import com.gluonhq.charm.glisten.afterburner.GluonPresenter;
 import com.gluonhq.charm.glisten.mvc.View;
-import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import dev.kesorupert.UiResources;
 import dev.kesorupert.WorkoutApplication;
 import dev.kesorupert.model.Workout;
 import dev.kesorupert.service.WorkoutService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
