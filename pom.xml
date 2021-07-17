@@ -16,6 +16,7 @@
         <gluonfx.plugin.version>1.0.1</gluonfx.plugin.version>
         <javafx.plugin.version>0.0.6</javafx.plugin.version>
         <mainClassName>dev.kesorupert.WorkoutApplication</mainClassName>
+        <charm.version>6.0.6</charm.version>
     </properties>
 
     <dependencies>
@@ -32,7 +33,7 @@
         <dependency>
             <groupId>com.gluonhq</groupId>
             <artifactId>charm-glisten</artifactId>
-            <version>6.0.6</version>
+            <version>${charm.version}</version>
         </dependency>
         <dependency>
             <groupId>com.gluonhq</groupId>
@@ -67,7 +68,7 @@
         <dependency>
             <groupId>com.gluonhq</groupId>
             <artifactId>charm-cloudlink-client</artifactId>
-            <version>6.0.6</version>
+            <version>${charm.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
@@ -129,8 +130,10 @@
                         <list>dev.kesorupert.view.NewWorkoutPresenter</list>
                         <list>dev.kesorupert.model.ExerciseModel</list>
                         <list>dev.kesorupert.model.Exercise</list>
+                        <list>dev.kesorupert.service.ExerciseService</list>
                         <!--<list>dev.kesorupert.model.WorkoutModel</list>
                         <list>dev.kesorupert.model.Workout</list>-->
+                        <list>dev.kesorupert.service.WorkoutService</list>
                     </reflectionList>
                     <mainClass>${mainClassName}</mainClass>
                 </configuration>

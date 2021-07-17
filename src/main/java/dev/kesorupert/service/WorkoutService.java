@@ -4,14 +4,7 @@ import dev.kesorupert.model.Workout;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import javax.inject.Named;
-import java.lang.reflect.Array;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-@Named
 public class WorkoutService {
 
     public static ObservableList<Workout> workoutList = FXCollections.observableArrayList(
