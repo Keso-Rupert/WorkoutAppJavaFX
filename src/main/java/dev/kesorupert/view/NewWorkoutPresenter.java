@@ -30,8 +30,7 @@ public class NewWorkoutPresenter extends GluonPresenter<WorkoutApplication> {
 
         TextField workoutNameTF = new TextField();
         TextField workoutDescTF = new TextField();
-
-        Button saveButton = new Button("Save!");
+        Button saveButton = new Button("Save workout!");
         saveButton.setOnAction(event -> {
             String workoutName = workoutNameTF.getCharacters().toString();
             String workoutDesc = workoutDescTF.getCharacters().toString();

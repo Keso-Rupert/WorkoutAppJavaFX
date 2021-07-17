@@ -5,6 +5,8 @@ public class Exercise {
     String exerciseName;
     String exerciseCategory;
 
+    public Exercise(){}
+
     public Exercise(String exerciseName, String exerciseCategory) {
         this.exerciseName = exerciseName;
         this.exerciseCategory = exerciseCategory;
