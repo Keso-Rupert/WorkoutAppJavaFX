@@ -11,16 +11,15 @@ import dev.kesorupert.model.Exercise;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import javax.annotation.PostConstruct;
 
 public class ExerciseService {
 
     // Identifier for the DataClient
-    private static final String EXERCISES = "exercises-v1";
+    private static final String EXERCISES = "exercises-v2";
 
-    // Wrapper of an observable list of exercises
+    // Wrapper of an observable list of exercises (gluonExercises)
     private final ListProperty<Exercise> exercises = new SimpleListProperty<>(FXCollections.observableArrayList());
 
     private DataClient dataClient;
@@ -36,7 +35,7 @@ public class ExerciseService {
 
     public void retrieveExercises() {
         // SyncFlag.LIST_WRITE_THROUGH, so changes in the list are automatically stored locally
-        // SyncFlag.OBJECT_WRITE_THROUGH, so changes in the properties in the list are also stored locally
+        // SyncFlag.OBJECT_WRITE_THROUGH, so changes in the properties of the list are also stored locally
         GluonObservableList<Exercise> gluonExercises = DataProvider.retrieveList(
                 dataClient.createListDataReader(EXERCISES, Exercise.class,
                         SyncFlag.LIST_WRITE_THROUGH, SyncFlag.OBJECT_WRITE_THROUGH));
@@ -60,23 +59,5 @@ public class ExerciseService {
     public ListProperty<Exercise> exercisesListProperty(){
         return  exercises;
     }
-
-
-
-
-
-    public static ObservableList<Exercise> exerciseList = FXCollections.observableArrayList(
-            new Exercise("Push ups"),
-            new Exercise("Pull ups"),
-            new Exercise("Bench press"),
-            new Exercise("Squat"));
-
-    public ObservableList<Exercise> getExerciseList() {
-        return exerciseList;
-    }
-
-//    public void addExercise(Exercise exercise) {
-//        exerciseList.add(exercise);
-//    }
 
 }

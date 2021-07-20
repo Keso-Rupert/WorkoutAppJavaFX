@@ -4,25 +4,34 @@ import com.gluonhq.charm.glisten.afterburner.GluonPresenter;
 import com.gluonhq.charm.glisten.mvc.View;
 import dev.kesorupert.UiResources;
 import dev.kesorupert.WorkoutApplication;
+import dev.kesorupert.model.ExerciseWrapper;
 import dev.kesorupert.model.Workout;
+import dev.kesorupert.model.WorkoutSelectionModel;
 import dev.kesorupert.service.WorkoutService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
-public class NewWorkoutPresenter extends GluonPresenter<WorkoutApplication> {
+public class WorkoutPresenter extends GluonPresenter<WorkoutApplication> {
 
     @FXML
-    private View newWorkoutView;
+    private View workoutView;
 
     @Inject
     private WorkoutService workoutService;
+    @Inject
+    private WorkoutSelectionModel workoutSelectionModel;
 
     public void initialize() {
-        newWorkoutView.showingProperty().addListener((obs, oldValue, newValue) -> {
+        workoutView.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
                 getApp().getAppBar().setVisible(false);
             }
@@ -44,8 +53,22 @@ public class NewWorkoutPresenter extends GluonPresenter<WorkoutApplication> {
 
         VBox vBox = new VBox(5, workoutNameTF, workoutDescTF, saveButton);
 
-        newWorkoutView.setCenter(vBox);
-        newWorkoutView.setBottom(UiResources.createBottomNavigation());
+//        workoutView.setCenter(vBox);
+        setUpWorkoutView();
+        workoutView.setBottom(UiResources.createBottomNavigation());
+    }
+
+    private void setUpWorkoutView(){
+        Workout workout = workoutSelectionModel.activeWorkout().get();
+        VBox workoutVbox;
+        HBox workoutName = new HBox(5, new Label("Name: "), new Label(workout.getWorkoutName()));
+        workoutVbox = new VBox(5, workoutName, new Label("Notes: "), new Label(workout.getWorkoutDesc()));
+
+        for(ExerciseWrapper wrapper : workout.getExerciseWrapperList()) {
+            VBox exerciseVbox = new VBox(5, new Label(wrapper.getExercise().getExerciseName()), new Label(wrapper.getWeightsAndReps()));
+            workoutVbox.getChildren().add(exerciseVbox);
+        }
+        workoutView.setCenter(workoutVbox);
     }
 
 }

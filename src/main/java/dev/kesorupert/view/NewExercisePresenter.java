@@ -2,13 +2,10 @@ package dev.kesorupert.view;
 
 import com.gluonhq.charm.glisten.afterburner.GluonPresenter;
 import com.gluonhq.charm.glisten.mvc.View;
-import dev.kesorupert.UiResources;
 import dev.kesorupert.WorkoutApplication;
 import dev.kesorupert.model.Exercise;
-import dev.kesorupert.model.ExerciseModel;
-import dev.kesorupert.model.Workout;
+import dev.kesorupert.model.ExerciseSelectionModel;
 import dev.kesorupert.service.ExerciseService;
-import dev.kesorupert.service.WorkoutService;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,10 +23,11 @@ public class NewExercisePresenter extends GluonPresenter<WorkoutApplication> {
     @Inject
     private ExerciseService exerciseService;
     @Inject
-    private ExerciseModel exerciseModel;
+    private ExerciseSelectionModel exerciseSelectionModel;
 
-    Button saveButton = new Button();
+    Button saveButton = new Button("Save");
     Button cancelButton = new Button("Cancel");
+    Button deleteButton = new Button("Delete");
     TextField exerciseNameTF = new TextField();
     TextField exerciseCategoryTF = new TextField();
 
@@ -43,11 +41,10 @@ public class NewExercisePresenter extends GluonPresenter<WorkoutApplication> {
                 // Disable the save button
                 saveButton.disableProperty().unbind();
                 // Try to get a selected exercise from the model
-                Exercise activeExercise = exerciseModel.activeExercise().get();
+                Exercise activeExercise = exerciseSelectionModel.activeExercise().get();
                 // If it is not null, a exercise was selected to be edited
                 if (activeExercise != null) {
                     editMode = true;
-                    saveButton.setText("Apply");
                     exerciseNameTF.setText(activeExercise.getExerciseName());
                     exerciseCategoryTF.setText(activeExercise.getExerciseCategory());
 
@@ -62,7 +59,9 @@ public class NewExercisePresenter extends GluonPresenter<WorkoutApplication> {
                     }, exerciseNameTF.textProperty(), exerciseCategoryTF.textProperty())); // These last two paramaters are the properties to which the savebutton is synchronized by the binding API.
                 } else { // if it is null, it involves the creation of a new exercise
                     editMode = false;
-                    saveButton.setText("Submit");
+                    exerciseNameTF.setPromptText("Exercise name");
+                    exerciseCategoryTF.setPromptText("Exercise category");
+                    // The save button remains disabled till both text fields are filled
                     saveButton.disableProperty().bind(Bindings.createBooleanBinding(() -> {
                         return exerciseNameTF.textProperty().isEmpty().or(exerciseCategoryTF.textProperty().isEmpty()).get();
                     }, exerciseNameTF.textProperty(), exerciseCategoryTF.textProperty()));
@@ -76,7 +75,7 @@ public class NewExercisePresenter extends GluonPresenter<WorkoutApplication> {
         saveButton.setOnAction(event -> {
             System.out.println("Save button pressed");
             // If we're in editMode, retrieve the to be saved exercise from the model, otherwise create a new exercise
-            Exercise exercise = editMode ? exerciseModel.activeExercise().get() : new Exercise();
+            Exercise exercise = editMode ? exerciseSelectionModel.activeExercise().get() : new Exercise();
             exercise.setExerciseName(exerciseNameTF.getText());
             exercise.setExerciseCategory(exerciseCategoryTF.getText());
             if(!editMode){
@@ -87,7 +86,16 @@ public class NewExercisePresenter extends GluonPresenter<WorkoutApplication> {
         });
         cancelButton.setOnAction(event -> close());
 
-        HBox buttonHBox = new HBox(5, saveButton, cancelButton);
+        deleteButton.setOnAction(event -> {
+            // If we're in editmode remove the Exercise that is active in the model
+            // If not in editmode, there is no Exercise object persisted yet, so we can simply close
+            if (editMode) {
+                exerciseService.removeExercise(exerciseSelectionModel.activeExercise().get());
+            }
+            close();
+        });
+
+        HBox buttonHBox = new HBox(5, saveButton, cancelButton, deleteButton);
         VBox vBox = new VBox(5, exerciseNameTF, exerciseCategoryTF, buttonHBox);
 
         newExerciseView.setCenter(vBox);
@@ -96,7 +104,7 @@ public class NewExercisePresenter extends GluonPresenter<WorkoutApplication> {
     public void close(){
         exerciseNameTF.clear();
         exerciseCategoryTF.clear();
-        exerciseModel.activeExercise().set(null);
+        exerciseSelectionModel.activeExercise().set(null);
         AppViewManager.EXERCISES_VIEW.switchView();
     }
 

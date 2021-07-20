@@ -24,6 +24,7 @@ public class AppViewManager {
     public static final AppView ROUTINES_VIEW = view("Routines", RoutinesPresenter.class, MaterialDesignIcon.VIEW_LIST);
     public static final AppView EXERCISES_VIEW = view("Exercises", ExercisesPresenter.class, MaterialDesignIcon.ROWING);
     public static final AppView NEW_WORKOUT_VIEW = view("New workout", NewWorkoutPresenter.class, MaterialDesignIcon.PLAYLIST_ADD);
+    public static final AppView WORKOUT_VIEW = view("Workout", WorkoutPresenter.class, MaterialDesignIcon.PANORAMA_FISH_EYE);
     public static final AppView NEW_EXERCISE_VIEW = view("New exercise", NewExercisePresenter.class, MaterialDesignIcon.PLAYLIST_ADD);
 
     private static AppView view(String title, Class<? extends GluonPresenter<?>> presenterClass, MaterialDesignIcon menuIcon, AppView.Flag... flags ) {

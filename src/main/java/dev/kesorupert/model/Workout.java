@@ -5,12 +5,14 @@ import javafx.beans.property.StringProperty;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.List;
 
 public class Workout {
 
     private final StringProperty workoutName = new SimpleStringProperty();
     private final StringProperty workoutDesc = new SimpleStringProperty();
     private long creationDate;
+    private List<ExerciseWrapper> exerciseWrapperList;
 
     public Workout(){
         this.creationDate = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
@@ -54,4 +56,11 @@ public class Workout {
         this.creationDate = localDateTime.toEpochSecond(ZoneOffset.UTC);
     }
 
+    public List<ExerciseWrapper> getExerciseWrapperList() {
+        return exerciseWrapperList;
+    }
+
+    public void setExerciseWrapperList(List<ExerciseWrapper> exerciseWrapperList) {
+        this.exerciseWrapperList = exerciseWrapperList;
+    }
 }

@@ -1,18 +1,14 @@
 package dev.kesorupert.view;
 
 import com.gluonhq.charm.glisten.afterburner.GluonPresenter;
-import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.control.CharmListView;
 import com.gluonhq.charm.glisten.mvc.View;
-import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import dev.kesorupert.UiResources;
 import dev.kesorupert.WorkoutApplication;
 import dev.kesorupert.cell.ExerciseCell;
-import dev.kesorupert.cell.WorkoutCell;
-import dev.kesorupert.cell.WorkoutHeaderCell;
+import dev.kesorupert.cell.ExerciseHeaderCell;
 import dev.kesorupert.model.Exercise;
-import dev.kesorupert.model.ExerciseModel;
-import dev.kesorupert.model.Workout;
+import dev.kesorupert.model.ExerciseSelectionModel;
 import dev.kesorupert.service.ExerciseService;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -34,9 +30,9 @@ public class ExercisesPresenter extends GluonPresenter<WorkoutApplication> {
     @Inject
     private ExerciseService exerciseService;
     @Inject
-    private ExerciseModel exerciseModel;
+    private ExerciseSelectionModel exerciseSelectionModel;
 
-    private CharmListView<Exercise, Integer> charmListView = new CharmListView<>();
+    private CharmListView<Exercise, String> charmListView = new CharmListView<>();
 
     public void initialize() {
         exercisesView.showingProperty().addListener((obs, oldValue, newValue) -> {
@@ -53,23 +49,26 @@ public class ExercisesPresenter extends GluonPresenter<WorkoutApplication> {
             charmListView.setItems(exercises);
         });
 
-
+        // Setting the subheader properties for the CharmListView
+        charmListView.setHeadersFunction(Exercise::getExerciseCategory);
+        charmListView.setHeaderCellFactory(cell -> new ExerciseHeaderCell());
         // Setting the CellFactory for the cells containing exercises
-        charmListView.setCellFactory(cell -> new ExerciseCell(this::edit));
+        charmListView.setCellFactory(cell -> new ExerciseCell(this::editExercise));
+        charmListView.setComparator(Comparator.comparing(Exercise::getExerciseName));
 
         charmListView.setPlaceholder(new Label("There are no exercises yet"));
 
         exerciseService.retrieveExercises();
 
-        VBox vBox = new VBox(charmListView, addExerciseButton);
+        VBox vBox = new VBox(addExerciseButton, charmListView);
         exercisesView.setCenter(vBox);
         exercisesView.setBottom(UiResources.createBottomNavigation());
 
 
     }
 
-    private void edit(Exercise exercise) {
-        exerciseModel.activeExercise().set(exercise);
+    private void editExercise(Exercise exercise) {
+        exerciseSelectionModel.activeExercise().set(exercise);
         AppViewManager.NEW_EXERCISE_VIEW.switchView();
     }
 

@@ -2,25 +2,30 @@ package dev.kesorupert.cell;
 
 import com.gluonhq.charm.glisten.control.CharmListCell;
 import com.gluonhq.charm.glisten.control.ListTile;
+import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import dev.kesorupert.model.Workout;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 
 import java.time.format.DateTimeFormatter;
+import java.util.function.Consumer;
 
 public class WorkoutCell extends CharmListCell<Workout> {
     private final ListTile listTile;
     private Workout currentWorkoutItem;
     private final DateTimeFormatter dateTimeFormatter;
 
-    public WorkoutCell(){
+    public WorkoutCell(Consumer<Workout> view){
         listTile = new ListTile();
-/*        listTile.setPrimaryGraphic(MaterialDesignIcon.DESCRIPTION.graphic());
 
-        Button btnEdit = MaterialDesignIcon.EDIT.button();
-        Button btnRemove = MaterialDesignIcon.DELETE.button();
-        HBox buttonBar = new HBox(0, btnEdit, btnRemove);
+        Button viewButton = MaterialDesignIcon.VIEW_QUILT.button();
+        viewButton.setStyle("-fx-background-color:Darkgray; ");
+        viewButton.setOnAction(e -> view.accept(currentWorkoutItem));
+        HBox buttonBar = new HBox(viewButton);
         buttonBar.setAlignment(Pos.CENTER_RIGHT);
 
-        listTile.setSecondaryGraphic(buttonBar);*/
+        listTile.setSecondaryGraphic(buttonBar);
 
         dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE;
     }

@@ -22,7 +22,7 @@ public class ExerciseHeaderCell extends CharmListCell<Exercise> {
         currentExerciseItem = item;
         if (!empty && item != null) {
             // setting the label with the month of the workout
-            label.setText("Category as header?");
+            label.setText(currentExerciseItem.getExerciseCategory());
             setGraphic(label);
         } else {
             setGraphic(null);

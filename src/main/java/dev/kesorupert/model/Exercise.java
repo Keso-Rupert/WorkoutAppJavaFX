@@ -1,35 +1,38 @@
 package dev.kesorupert.model;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Exercise {
 
-    String exerciseName;
-    String exerciseCategory;
+    StringProperty exerciseName = new SimpleStringProperty();
+    StringProperty exerciseCategory = new SimpleStringProperty();
 
     public Exercise(){}
 
     public Exercise(String exerciseName, String exerciseCategory) {
-        this.exerciseName = exerciseName;
-        this.exerciseCategory = exerciseCategory;
+        this.exerciseName.set(exerciseName);
+        this.exerciseCategory.set(exerciseCategory);
     }
 
     public Exercise(String exerciseName) {
-        this.exerciseName = exerciseName;
-        this.exerciseCategory = "Other";
+        this.exerciseName.set(exerciseName);
+        this.exerciseCategory.set("Other");
     }
 
     public String getExerciseName() {
-        return exerciseName;
+        return exerciseName.get();
     }
 
     public void setExerciseName(String exerciseName) {
-        this.exerciseName = exerciseName;
+        this.exerciseName.set(exerciseName);
     }
 
     public String getExerciseCategory() {
-        return exerciseCategory;
+        return exerciseCategory.get();
     }
 
     public void setExerciseCategory(String exerciseCategory) {
-        this.exerciseCategory = exerciseCategory;
+        this.exerciseCategory.set(exerciseCategory);
     }
 }
