@@ -68,7 +68,7 @@ public class WorkoutPresenter extends GluonPresenter<WorkoutApplication> {
             VBox exerciseVbox = new VBox(5, new Label(wrapper.getExercise().getExerciseName()), new Label(wrapper.getWeightsAndReps()));
             workoutVbox.getChildren().add(exerciseVbox);
         }
-        workoutView.setCenter(workoutVbox);
+//        workoutView.setCenter(workoutVbox);
     }
 
 }

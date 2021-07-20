@@ -19,7 +19,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="workoutName" text="tbd" />
+                  <Label fx:id="workoutName" text="LowerBody" />
                </children>
                <VBox.margin>
                   <Insets />
@@ -33,7 +33,48 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="workoutNotes" text="tbd" />
+            <Label fx:id="workoutNotes" text="another one in the books">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding></Label>
+            <Label text="Exercises" underline="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <VBox prefWidth="100.0">
+               <children>
+                  <Label text="Squat" />
+                  <Label text="5 x 100" />
+                  <Label layoutX="10.0" layoutY="28.0" text="5 x 110" />
+                  <Label layoutX="10.0" layoutY="46.0" text="5 x 120" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </VBox>
+            <VBox layoutX="15.0" layoutY="88.0" prefWidth="100.0">
+               <children>
+                  <Label text="Deadlift" />
+                  <Label text="5 x 100" />
+                  <Label layoutX="10.0" layoutY="28.0" text="5 x 110" />
+                  <Label layoutX="10.0" layoutY="46.0" text="5 x 120" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </VBox>
+            <VBox layoutX="15.0" layoutY="170.0" prefWidth="100.0">
+               <children>
+                  <Label text="Leg Press" />
+                  <Label text="5 x 100" />
+                  <Label layoutX="10.0" layoutY="28.0" text="5 x 110" />
+                  <Label layoutX="10.0" layoutY="46.0" text="5 x 120" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </VBox>
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
