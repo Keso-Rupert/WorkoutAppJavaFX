@@ -42,7 +42,8 @@ public class NewWorkoutPresenter extends GluonPresenter<WorkoutApplication> {
                 workoutService.addWorkout(new Workout(workoutName, workoutDesc));
             } else {
                 System.out.println("Empty workout");
-            };});
+            }
+        });
 
         VBox vBox = new VBox(5, workoutNameTF, workoutDescTF, new HBox(5, addExerciseButton, saveButton));
 

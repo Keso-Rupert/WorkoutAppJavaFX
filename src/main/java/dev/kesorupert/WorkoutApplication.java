@@ -17,8 +17,6 @@ public class WorkoutApplication extends MobileApplication {
     @Override
     public void postInit(Scene scene) {
         Swatch.BLUE_GREY.assignTo(scene);
-        scene.getStylesheets().forEach(System.out::println);
-
 
         scene.getStylesheets().add(WorkoutApplication.class.getResource("style.css").toExternalForm());
         ((Stage) scene.getWindow()).getIcons().add(new Image(WorkoutApplication.class.getResourceAsStream("/easy.png")));

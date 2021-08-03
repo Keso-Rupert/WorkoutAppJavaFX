@@ -10,10 +10,10 @@ import com.gluonhq.charm.glisten.control.NavigationDrawer;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import dev.kesorupert.WorkoutApplication;
 import javafx.scene.image.Image;
+
 import java.util.Locale;
 
 import static com.gluonhq.charm.glisten.afterburner.AppView.Flag.HOME_VIEW;
-import static com.gluonhq.charm.glisten.afterburner.AppView.Flag.SHOW_IN_DRAWER;
 import static com.gluonhq.charm.glisten.afterburner.AppView.Flag.SKIP_VIEW_STACK;
 
 public class AppViewManager {
