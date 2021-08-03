@@ -122,12 +122,19 @@
                         <list>storage</list>
                     </attachList>
                     <bundlesList>
-                        <list>dev.kesorupert.view.primary</list>
-                        <list>dev.kesorupert.view.secondary</list>
+                        <list>dev.kesorupert.view.exercises</list>
+                        <list>dev.kesorupert.view.log</list>
+                        <list>dev.kesorupert.view.newexercise</list>
+                        <list>dev.kesorupert.view.newworkout</list>
+                        <list>dev.kesorupert.view.routines</list>
+                        <list>dev.kesorupert.view.workout</list>
                     </bundlesList>
                     <reflectionList>
                         <list>dev.kesorupert.view.LogPresenter</list>
                         <list>dev.kesorupert.view.NewWorkoutPresenter</list>
+                        <list>dev.kesorupert.view.ExercisesPresenter</list>
+                        <list>dev.kesorupert.view.NewExercisePresenter</list>
+                        <list>dev.kesorupert.view.WorkoutPresenter</list>
                         <list>dev.kesorupert.model.ExerciseSelectionModel</list>
                         <list>dev.kesorupert.model.Exercise</list>
                         <list>dev.kesorupert.service.ExerciseService</list>
